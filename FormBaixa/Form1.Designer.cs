@@ -50,6 +50,7 @@
             this.dgvVenda.Size = new System.Drawing.Size(857, 410);
             this.dgvVenda.TabIndex = 0;
             this.dgvVenda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVenda_CellClick);
+            this.dgvVenda.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVenda_CellContentClick);
             // 
             // btnImportar
             // 

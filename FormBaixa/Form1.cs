@@ -88,17 +88,17 @@ namespace FormBaixa
                 dgvVenda.Rows.Add(false, id, ean, produto, valor_compra, valor_venda, estoque);
             }
 
-            
-
-            /*foreach (DataGridViewRow Row in dgvVenda.Rows)
-                if (Convert.ToInt32(Row.Cells[3].Value) >= Convert.ToInt32(Row.Cells[4].Value))
+            foreach (DataGridViewRow row in dgvVenda.Rows)
+            {
+                if (Convert.ToDouble(row.Cells[5].Value) > Convert.ToDouble(row.Cells[4].Value))
                 {
-                    Row.DefaultCellStyle.ForeColor = Color.Red;
+                    row.DefaultCellStyle.BackColor = Color.White;
                 }
                 else
                 {
-                    Row.DefaultCellStyle.ForeColor = Color.Green;
-                }*/
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
         }
 
         private void btnMarcar_Click(object sender, EventArgs e)
@@ -136,25 +136,28 @@ namespace FormBaixa
             {
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
-                    row.Cells[5].Value = (Convert.ToDouble(row.Cells[5].Value) + Convert.ToDouble(row.Cells[5].Value) * aumento).ToString("C");
+                    row.Cells[5].Value = (Convert.ToDouble(row.Cells[5].Value) + Convert.ToDouble(row.Cells[5].Value) * aumento);           
+                }
 
-                    /*double preço_antigo = Convert.ToDouble(row.Cells[5].Value);
-                    double preço_atual = preço_antigo + preço_antigo * (aumento / 100);
-
-                    row.Cells[5].Value = preço_atual.ToString("C");
-
-                    preço_antigo = 0;
-                    preço_atual = 0;*/
-                    
+                if (Convert.ToDouble(row.Cells[5].Value) > Convert.ToDouble(row.Cells[4].Value))
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
-
-            txtAumento.Clear();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void dgvVenda_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
