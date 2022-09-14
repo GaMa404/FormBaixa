@@ -87,6 +87,18 @@ namespace FormBaixa
 
                 dgvVenda.Rows.Add(false, id, ean, produto, valor_compra, valor_venda, estoque);
             }
+
+            
+
+            /*foreach (DataGridViewRow Row in dgvVenda.Rows)
+                if (Convert.ToInt32(Row.Cells[3].Value) >= Convert.ToInt32(Row.Cells[4].Value))
+                {
+                    Row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+                else
+                {
+                    Row.DefaultCellStyle.ForeColor = Color.Green;
+                }*/
         }
 
         private void btnMarcar_Click(object sender, EventArgs e)
@@ -138,6 +150,11 @@ namespace FormBaixa
             }
 
             txtAumento.Clear();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
